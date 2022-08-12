@@ -1,0 +1,29 @@
+package test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ttp {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\4071\\Documents\\chromedriver_win32 (2)/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://omayo.blogspot.in/");
+		
+		
+		driver.findElement(By.xpath("//textarea[contains(@id,'ta')]")).sendKeys("Mubashir Ahmed Khan");
+		
+        String getVar=	driver.findElement(By.xpath("//textarea[contains(text(),'The cat')]")).getText();
+        System.out.print(getVar);
+        
+        driver.findElement(By.xpath("//textarea[contains(text(),'The cat was playing')]")).clear();
+        driver.findElement(By.xpath("//textarea[contains(text(),'The cat was playing')]")).sendKeys("i am very kind");
+
+	
+	}
+}
+
+
