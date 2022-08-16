@@ -1,0 +1,137 @@
+package test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class ttp {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\4071\\Documents\\chromedriver_win32 (2)/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://omayo.blogspot.in/");
+		
+		
+		driver.findElement(By.xpath("//textarea[contains(@id,'ta')]")).sendKeys("Mubashir Ahmed Khan");
+		
+        String getVar=	driver.findElement(By.xpath("//textarea[contains(text(),'The cat')]")).getText();
+        System.out.println(getVar);
+        
+        driver.findElement(By.xpath("//textarea[contains(text(),'The cat was playing')]")).clear();
+        driver.findElement(By.xpath("//textarea[contains(text(),'The cat was playing')]")).sendKeys("i am very friendly");
+
+        String innerText = driver.findElement(By.xpath("//table[contains(@id,'table1')]")).getText(); 	
+                System.out.println(innerText); 
+                
+                driver.findElement(By.xpath("//form/input[contains(@type,'text')]")).sendKeys("abc@gmail.com");
+                driver.findElement(By.xpath("//form/input[contains(@type,'password')]")).sendKeys("passworddummy");
+                driver.findElement(By.xpath("//button[contains(@value,'LogIn')]")).click();
+                driver.switchTo().defaultContent();
+                driver.findElement(By.xpath("//iframe[contains(@id,'iframe1')]"));
+                System.out.println("Inside frame1");
+                driver.switchTo().defaultContent();
+                driver.findElement(By.xpath("//iframe[contains(@id,'iframe2')]"));
+                driver.switchTo().defaultContent();
+                System.out.println("Inside frame2");
+                
+//                Actions action = new Actions(driver);
+//        		WebElement element = driver.findElement(By.xpath("//iframe[contains(@id,'iframe1')]"));
+//        		action.moveToElement(element).click().perform();
+//        		
+//        		
+//        		Actions action1 = new Actions(driver);
+//        		WebElement element1 = driver.findElement(By.xpath("//iframe[contains(@id,'iframe2')]"));
+//        		action1.moveToElement(element1).click().perform();
+        		
+        		driver.findElement(By.xpath("//form/input[contains(@name,'userid')]")).sendKeys("xyz@gmail.com");
+                driver.findElement(By.xpath("//form/input[contains(@name,'pswrd')]")).sendKeys("passworddummy");
+                driver.findElement(By.xpath("//input[contains(@value,'Login')]")).click();
+                driver.switchTo().alert().accept();
+        		
+                
+                WebElement option1= driver.findElement(By.xpath("//select[contains(@id,'multiselect1')]"));
+                Actions action = new Actions(driver);
+                action.keyDown(Keys.CONTROL).click(option1).build().perform();
+                
+                Select doc = new Select(driver.findElement(By.xpath("//select[contains(@id,'drop1')]")));                			               
+                doc.selectByValue("jkl");
+                
+                
+                driver.findElement(By.xpath("//input[contains(@id,'textbox1')]")).clear();
+                driver.findElement(By.xpath("//input[contains(@id,'textbox1')]")).sendKeys("Hello World");
+                
+                driver.findElement(By.xpath("//button[contains(@id,'but2')]")).click();
+                driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+                driver.findElement(By.xpath("//button[contains(text(),'Login')]")).click();
+                driver.findElement(By.xpath("//button[contains(text(),'Register')]")).click();
+                
+                driver.findElement(By.xpath("//input[contains(@id,'alert2')]")).click();
+                driver.switchTo().alert().accept();
+                
+//                driver.findElement(By.xpath("//a[contains(text(),'Open a popup window')]")).click();
+//                String defaultFrame= driver.getWindowHandle();
+//                for (String openwindow : driver.getWindowHandles())
+//                {
+//                	driver.switchTo().window(defaultFrame);
+//                }
+//                  String a= driver.findElement(By.xpath("//p[contains(@id,'para1')]")).getText();
+//                  String b= driver.findElement(By.xpath("//p[contains(@id,'para2')]")).getText();
+//                  System.out.println(a);
+//                  System.out.println(b);
+//                  
+//                  driver.close();
+//                  driver.switchTo().window(defaultFrame);
+//
+//                
+//                driver.findElement(By.xpath("//button[contains(@onclick,'setTimeout(myFunctionABC,3000)')]")).click();
+//                
+//                WebElement dbl = driver.findElement(By.xpath("//button[contains(@ondblclick,'dblclickAlert()')]"));
+//                Action dblck = builder.doubleClick(dbl).build();
+//                dblck.perform();
+//                
+//                driver.findElement(By.xpath("//button[contains(@onclick,'setTimeout(myFunctionAXD,10000)')]")).click();
+//                WebElement check = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id,'dte')]")));
+//                driver.findElement(By.xpath("//input[contains(@id,'dte')]")).click();
+                
+                  driver.findElement(By.xpath("//input[contains(@id,'radio1')]")).click();
+                  driver.findElement(By.xpath("//input[contains(@id,'alert1')]")).click();
+                  driver.switchTo().alert().accept();
+                  
+                  driver.findElement(By.xpath("//input[contains(@id,'checkbox1')]")).click();
+                  driver.findElement(By.xpath("//input[contains(@id,'checkbox2')]")).click();
+                  
+                 String abc =  driver.findElement(By.xpath("//input[contains(@id,'rotb')]")).getText();
+                 System.out.println(abc);
+                 
+                 driver.findElement(By.xpath("//input[contains(@id,'prompt')]")).click();
+                 driver.switchTo().alert().sendKeys("Mubashir Ahmed Khan");              
+                 driver.switchTo().alert().accept();
+                 
+                 driver.findElement(By.xpath("//input[contains(@id,'confirm')]")).click();
+                 driver.switchTo().alert().accept();
+                 
+                 driver.findElement(By.xpath("//input[contains(@name,'textboxn')]")).sendKeys("abcdesf");
+                 driver.findElement(By.xpath("//div[contains(@id,'HTML24')]//div[contains(@class,'widget-content')]//input[contains(@type,'text')]")).sendKeys("using xpath");
+                 driver.findElement(By.xpath("//div[contains(@id,'HTML28')]//div[contains(@class,'widget-content')]//input[contains(@type,'text')]")).sendKeys(" xpath");
+                 
+                 driver.findElement(By.xpath("//input[contains(@value,'Car')]")).click();
+                 
+                 driver.findElement(By.xpath("//input[contains(@value,'Book')]")).click();
+                 driver.findElement(By.xpath("//input[contains(@value,'Book')]")).click();
+                 driver.findElement(By.xpath("//input[contains(@value,'Bag')]")).click();
+                 
+                 
+                 driver.findElement(By.xpath("//button[contains(text(),'Dropdown')]")).click();
+                 driver.findElement(By.xpath("//div[contains(@class,'dropdown')]//div[contains(@id,'myDropdown')]//a[contains(@href,'http://facebook.com')]")).click();
+                 
+	}             
+                  
+	
+	}
+
+
